@@ -60,4 +60,16 @@ describe 'Visitor view warehouses' do
     expect(page).to have_content 'GRU'
     expect(page).to have_content 'Praça 9'
   end
+
+  it 'and click to view a warehouse specific but render an error message if API is unavailable ' do
+    # Arrange
+    r = Faraday::Response.new(status: 503, response_body: '{}')
+    allow(Faraday).to receive(:get).with('http://127.0.0.1:3000/api/v1/warehouses/1').and_return(r)
+
+    # Act
+    visit warehouse_path(1)
+
+    # Assert
+    expect(page).to have_content 'Não foi possível carregar dados dos galpões'
+  end
 end

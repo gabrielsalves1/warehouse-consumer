@@ -1,23 +1,25 @@
-<%= flash[:notice] %>
+<% if @warehouse.empty? %>
+  <%= flash[:alert] %>
+<% else %>
+  <% @warehouse.each do |w| %>
+    <h1><%= w["name"] %></h1>
+    <h2><%= w["code"] %></h2>
 
-<% @warehouse.each do |w| %>
-  <h1><%= w["name"] %></h1>
-  <h2><%= w["code"] %></h2>
+    <dl>
+      <dt>Descrição</dt>
+      <dd><%= w["description"] %></dd>
 
-  <dl>
-    <dt>Descrição</dt>
-    <dd><%= w["description"] %></dd>
+      <dt>Endereço</dt>
+      <dd><%= w["address"] %> - <%= w["city"] %>/<%= w["state"] %></dd>
 
-    <dt>Endereço</dt>
-    <dd><%= w["address"] %> - <%= w["city"] %>/<%= w["state"] %></dd>
+      <dt>CEP:</dt>
+      <dd><%= w["postal_code"] %></dd>
 
-    <dt>CEP:</dt>
-    <dd><%= w["postal_code"] %></dd>
+      <dt>Área Total:</dt>
+      <dd><%= w["total_area"] %> m2</dd>
 
-    <dt>Área Total:</dt>
-    <dd><%= w["total_area"] %> m2</dd>
-
-    <dt>Área Útil:</dt>
-    <dd><%= w["useful_area"] %> m2</dd>
-  </dl>
+      <dt>Área Útil:</dt>
+      <dd><%= w["useful_area"] %> m2</dd>
+    </dl>
+  <% end %>
 <% end %>
