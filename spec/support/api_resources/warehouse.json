@@ -1,14 +1,12 @@
-[
-  {
-    "id": 1,
-    "name": "Guarulhos",
-    "code": "GRU",
-    "description": "Ótimo galpão numa linda cidade",
-    "address": "Praça 9", 
-    "city": "Guarulhos",
-    "state": "SP",
-    "postal_code": "09950-000",
-    "total_area": 10000,
-    "useful_area": 8000
-  }
-]
+{
+  "id": 1,
+  "name": "Guarulhos",
+  "code": "GRU",
+  "description": "Ótimo galpão numa linda cidade",
+  "address": "Praça 9", 
+  "city": "Guarulhos",
+  "state": "SP",
+  "postal_code": "09950-000",
+  "total_area": 10000,
+  "useful_area": 8000
+}
