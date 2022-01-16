@@ -1,7 +1,7 @@
 class Warehouse
-  attr_accessor :id, :name, :code, :address, :postal_code, :city, :state, :postal_code, :total_area, :useful_area
+  attr_accessor :id, :name, :code, :address, :description, :postal_code, :city, :state, :postal_code, :total_area, :useful_area
   def initialize(id:, name:, code:, address:, description:, city:, state:, postal_code:, total_area:, useful_area:)
-    @id = id
+    @id = 1
     @name = name
     @code = code
     @address = address
@@ -26,5 +26,26 @@ class Warehouse
       return nil
     end
     return result
+  end
+
+  def save(w)
+    response = Faraday.post('http://127.0.0.1:3000/api/v1/warehouses') do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.body = {"name": w.name,
+        "code": w.code,
+        "description": w.description,
+        "address": w.address,
+        "city": w.city,
+        "state": w.state,
+        "postal_code": w.postal_code,
+        "total_area": w.total_area,
+        "useful_area": w.useful_area,
+        "category_ids": 1}.to_json
+      end
+
+    if response.status == 201
+      return true
+    end
+    return false
   end
 end

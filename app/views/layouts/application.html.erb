@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to 'Cadastrar Galpão', new_warehouse_path %>
+      </nav>
+    </header>
+    <%= flash[:notice] %>
     <%= yield %>
   </body>
 </html>
